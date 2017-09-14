@@ -5,18 +5,14 @@
 ## 用法
 
 下载`bin/wb.jar`
-运行`wb.jar`: `java -jar wb.jar`
+运行`java -jar wb.jar`
 
-![](img/2.png)  
+>无法运行? 没有安装JAVA 参考[这篇博文](http://www.cnblogs.com/ottox/p/3313540.html)
 
-
-
-输入`3`(当然你也可以输入1和2, 具体可以看我的[这篇博客](http://blog.yanximin.site/2017/09/05/weibo-userid-containerid/))
-
-输入用户昵称(什么! 不知道微博昵称是什么? 看下图~ 红框处就是昵称, 求一波关注)
-
-![](img/1.png)  
-
-等待下载完成即可(默认保存在`E:\\img\\`目录下, 你也可以修改). So Easy!
+![](img/1.png)
+1. 输入要保存图片的地址
+2. 输入`3` 当然你也可以输入1和2, 具体可以看我的[这篇博客](http://blog.yanximin.site/2017/09/05/weibo-userid-containerid/)
+3. 输入用户昵称(什么! 不知道微博昵称是什么? 看下图~ 红框处就是昵称, 求一波关注)
+4. 等待下载完成即可. So Easy!
 
 欢迎Fork, 或者PR
