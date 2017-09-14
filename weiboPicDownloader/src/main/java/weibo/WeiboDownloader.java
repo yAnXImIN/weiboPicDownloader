@@ -29,8 +29,8 @@ import com.google.gson.JsonParser;
 
 @SuppressWarnings("deprecation")
 public class WeiboDownloader {
-	/**Í¼Ïñ±£´æÎ»ÖÃ*/
-	private static final String IMG_LOCATION = "E:\\img\\";
+	/*è·¯å¾„*/
+	private static String IMG_LOCATION = "E:\\img\\";
 	
 	List<String> urls = new ArrayList<String>();
 	int getImgURL(String containerid,int page) throws ParseException, IOException{
@@ -62,48 +62,60 @@ public class WeiboDownloader {
 	
 	public static void main(String[] args) throws ParseException, IOException, InterruptedException {
 		Scanner scanner = new Scanner(System.in);
-		System.out.println("Please insert query type");
-		System.out.println("1 for userId");
-		System.out.println("2 for userName");
-		System.out.println("3 for userNickName");
+		System.out.println("è¯·è¾“å…¥å›¾ç‰‡è¦ä¿å­˜çš„åœ°å€");
+		IMG_LOCATION = scanner.nextLine();
+		if(!IMG_LOCATION.endsWith("/")&&!IMG_LOCATION.endsWith("\\")){
+			if(IMG_LOCATION.contains("/"))
+				IMG_LOCATION = IMG_LOCATION + "/";
+			else
+				IMG_LOCATION = IMG_LOCATION + "\\";
+		}
+		System.out.println("è¯·è¾“å…¥è¦ä¸‹è½½çš„è´¦å·åç§°:");
+		System.out.println("1ä»£è¡¨ç”¨æˆ·ID");
+		System.out.println("2ä»£è¡¨ç”¨æˆ·å");
+		System.out.println("3ä»£è¡¨ç”¨æˆ·æ˜µç§°(å»ºè®®)");
 		int type = scanner.nextInt();
 		String containerId = "";
 		if(type==1){
-			System.out.println("insert userId");
+			System.out.println("è¾“å…¥ç”¨æˆ·ID");
 			String uid = scanner.next();
 			containerId = uidToContainerId(uid);
 		}else if(type==2){
-			System.out.println("insert userName");
+			System.out.println("è¾“å…¥ç”¨æˆ·å");
 			String name = scanner.next();
 			containerId = usernameToContainerId(name);
 		}else if(type==3){
-			System.out.println("insert userNickName");
+			System.out.println("è¾“å…¥ç”¨æˆ·æ˜µç§°");
 			String nickname = scanner.next();
 			containerId = nicknameToContainerId(nickname);
 		}
 		WeiboDownloader weiboDownloader = new WeiboDownloader();
 		int i = 1;
 		while(weiboDownloader.getImgURL(containerId,i)>0){
-			System.out.println("analyze weibo: "+i);
+			System.out.println("åˆ†æå¾®åšä¸­: "+i);
 			i++;
 			Thread.sleep(1000);
 		}
-		System.out.println("analyzation done");
-		System.out.println("img count: " + weiboDownloader.urls.size());
+		System.out.println("åˆ†æå®Œæ¯•");
+		System.out.println("å›¾ç‰‡æ•°é‡: " + weiboDownloader.urls.size());
 		List<String> list = weiboDownloader.urls;
 		if(!new File(IMG_LOCATION).exists()){
-			new File(IMG_LOCATION).mkdirs();
+			try{
+				new File(IMG_LOCATION).mkdirs();
+			}catch (Exception e) {
+				System.out.println("æ— æ³•åˆ›å»ºç›®å½•,è¯·æ‰‹åŠ¨åˆ›å»º");
+			}
 		}
 		for(i=0;i<list.size();i++){
-			System.out.println("download img: "+i);
+			System.out.println("ä¸‹è½½å›¾ç‰‡: "+i);
 			byte[] imgbytes = download(list.get(i),10000);
 			FileUtils.byte2File(imgbytes,IMG_LOCATION + containerId.substring(6), i+1+".jpg");
 		}
-		System.out.println("all img is downloaded, location is " + IMG_LOCATION + containerId.substring(6));
+		System.out.println("å›¾ç‰‡ä¸‹è½½å®Œæˆ, è·¯å¾„æ˜¯ " + IMG_LOCATION + containerId.substring(6));
 		scanner.close();
 	}
 	
-	/**ÔÊĞí×î´óÍ¼Ïñ40M*/
+	/**æœ€å¤§å›¾ç‰‡å¤§å°40M*/
 	private static final long MAX_DOWNLOAD_SIZE = 40L * 1024 * 1024;
 	/**UA*/
 	static final String USER_AGENT = "Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36";
@@ -117,7 +129,7 @@ public class WeiboDownloader {
 		return 107603+uid;
 	}
 	/**
-	 * êÇ³Æ×ªcontianerId
+	 * æ˜µç§°è½¬ContainerId
 	 * @author yanximin
 	 * @throws IOException 
 	 * @throws ClientProtocolException 
@@ -135,8 +147,9 @@ public class WeiboDownloader {
 		}
 		return null;
 	}
+	
 	/**
-	 * ÓÃ»§Ãû×ªcontianerId
+	 * ç”¨æˆ·åè½¬contianerId
 	 * @author yanximin
 	 * @throws IOException 
 	 * @throws ClientProtocolException 
@@ -156,11 +169,9 @@ public class WeiboDownloader {
 		return null;
 	}
 	/**
-	 * ¶ÁÈ¡ÍøÂçÍ¼ÏñÎªbyteµÄ¸ñÊ½£¬ºóÃæÉèÖÃÏÂÔØÊ±¼ä
-	 *
+	 * ä¸‹è½½æŒ‡å®šæ–‡ä»¶åˆ°å†…å­˜
 	 * @param webUrl
-	 *            ÒªÏÂÔØµÄwebÍ¼ÏñµÄurl
-	 * @return byteÊı×é
+	 * @return byte
 	 * 
 	 *
 	 */
@@ -207,7 +218,7 @@ public class WeiboDownloader {
 		}
 	}
 	/**
-	 * ¶ÔÇëÇóµÄÒ»Ğ©ÉèÖÃ£¬´úÀí¡¢³¬Ê±Ê±¼äµÈ
+	 * åˆå§‹HttpClient
 	 * @author yanximin
 	 * */
 	public static HttpClient getHttpClient() {
