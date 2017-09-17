@@ -11,7 +11,7 @@
 
 ![](img/1.png)
 1. 输入要保存图片的地址
-2. 输入`3` 当然你也可以输入1和2, 具体可以看我的[这篇博客](http://blog.yanximin.site/2017/09/05/weibo-userid-containerid/)
+2. 输入`3` 当然你也可以输入`1`和`2`, 具体可以看我的[这篇博客](http://blog.yanximin.site/2017/09/05/weibo-userid-containerid/)
 3. 输入用户昵称
 4. 等待下载完成即可. So Easy!
 
