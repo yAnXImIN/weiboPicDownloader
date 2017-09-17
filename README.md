@@ -1,6 +1,6 @@
 # 免登录下载微博图片
 
-批量下载特定用户的高清大图
+批量下载特定用户的高清大图。
 
 ## 用法
 
@@ -15,4 +15,15 @@
 3. 输入用户昵称
 4. 等待下载完成即可. So Easy!
 
+## 更新说明
+- 2017年9月17日
+    - 重构代码
+    - 增加了多线程下载，下图的速度更快了~
+    - 修复下载GIF图片时后缀不显示为`gif`的问题
+
+## Python移植版本
+[ningshu/weiboPicDownloader](https://github.com/ningshu/weiboPicDownloader)  
+[nondanee/weiboPicDownloader](https://github.com/nondanee/weiboPicDownloader)  
+
+点个Star再走呗~  
 欢迎Fork, 或者PR
