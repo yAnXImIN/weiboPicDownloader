@@ -38,6 +38,9 @@ public class ImageDownloadTask implements Runnable{
 		}
 	}
 	private String getSuffix(String url){
+		if(!url.substring(url.lastIndexOf("/")).contains(".")){
+			return ".jpg";
+		}
 		try{
 			return url.substring(url.lastIndexOf("."));
 		}catch(Exception e){
