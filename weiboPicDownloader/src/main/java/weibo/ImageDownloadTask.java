@@ -28,10 +28,14 @@ public class ImageDownloadTask implements Runnable{
 	}
 	@Override
 	public void run() {
-		System.out.println("下载图片: " + ( imageIndex + 1));
-		byte[] imgBytes = FileUtils.download(imageUrl, 100_000);
-		downLatch.countDown();
-		FileUtils.byte2File(imgBytes, WeiboDownloader.IMG_LOCATION, imageIndex+1+getSuffix(imageUrl));
+		try{
+			System.out.println("下载图片: " + ( imageIndex + 1));
+			byte[] imgBytes = FileUtils.download(imageUrl, 100_000);
+			FileUtils.byte2File(imgBytes, WeiboDownloader.IMG_LOCATION, imageIndex+1+getSuffix(imageUrl));
+		}catch (Exception e) {
+		}finally {
+			downLatch.countDown();
+		}
 	}
 	private String getSuffix(String url){
 		try{

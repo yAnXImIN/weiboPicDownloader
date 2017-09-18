@@ -82,7 +82,7 @@ public class WeiboDownloader {
 		}
 		
 		downLatch.await();
-		System.out.println("图片下载完成, 路径是 " + IMG_LOCATION + containerId.substring(6));
+		System.out.println("图片下载完成, 路径是 " + IMG_LOCATION);
 		executor.shutdown();
 	}
 	
