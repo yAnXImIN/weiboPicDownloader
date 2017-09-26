@@ -1,4 +1,4 @@
 *.class
-.idea/*
+*/.idea/*
 .settings/*
 target
