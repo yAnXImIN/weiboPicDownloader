@@ -24,6 +24,9 @@
     - 重构代码
     - 增加了多线程下载，下图的速度更快了~
     - 修复下载GIF图片时后缀不显示为`gif`的问题
+- 2018年3月8日
+    - 根据[Issue#6](https://github.com/yAnXImIN/weiboPicDownloader/issues/6)的反馈，修正图片URL获取方式。感谢反馈者**idtolerate**！他发现了问题并且提出了修复代码
+    - 重新编译了可执行JAR文件。注意该文件需要在JDK 1.7+上才能运行
 
 ## Python移植版本
 [ningshu/weiboPicDownloader](https://github.com/ningshu/weiboPicDownloader)  
