@@ -5,15 +5,14 @@
 ## 用法
 
 下载`bin/wb.jar`
-运行`java -jar wb.jar`
+双击运行 或者执行`java -jar wb.jar`来启动
 
->无法运行? 没有安装JAVA 参考[这篇博文](http://www.cnblogs.com/ottox/p/3313540.html)
+>无法运行? 没有安装JAVA 去[这个网址](https://www.java.com/zh_CN/)
 
-![](img/1.png)
-1. 输入要保存图片的地址
-2. 输入`3` 当然你也可以输入`1`和`2`, 具体可以看我的[这篇博客](http://blog.yanximin.site/2017/09/05/weibo-userid-containerid/)
-3. 输入用户昵称
-4. 等待下载完成即可. So Easy!
+![](img/maingui.jpg)
+1. 按照需求点入响应的信息
+2. 如果对账号类型有疑问的话，可以参考[我的博客](https://www.cnblogs.com/yanximin/p/10982235.html)
+3. 等待下载完成即可. So Easy!
 
 ## 更新说明
 - 2017年9月18日  
@@ -27,7 +26,11 @@
 - 2018年3月8日
     - 根据[Issue#6](https://github.com/yAnXImIN/weiboPicDownloader/issues/6)的反馈，修正图片URL获取方式。感谢反馈者**idtolerate**！他发现了问题并且提出了修复代码
     - 重新编译了可执行JAR文件。注意该文件需要在JDK 1.7+上才能运行
-
+- 2019年10月24日
+	- 增加GUI，操作更加人性化。
+	- 新增时间选择
+	- 修复几处BUG
+	
 ## Python移植版本
 [ningshu/weiboPicDownloader](https://github.com/ningshu/weiboPicDownloader)  
 [nondanee/weiboPicDownloader](https://github.com/nondanee/weiboPicDownloader)  

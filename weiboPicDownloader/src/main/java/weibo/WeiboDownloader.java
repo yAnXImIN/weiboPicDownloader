@@ -2,7 +2,9 @@ package weibo;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
@@ -21,39 +23,34 @@ public class WeiboDownloader {
 	 * 路径
 	 * */
 	public static String IMG_LOCATION = "E:\\img\\";
-	
-	public static void main(String[] args) throws ParseException, IOException, InterruptedException {
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("请输入图片要保存的地址");
-		IMG_LOCATION = scanner.nextLine();
-		
-		System.out.println("请输入要下载的账号名称:");
-		System.out.println("1代表用户ID");
-		System.out.println("2代表用户名");
-		System.out.println("3代表用户昵称(建议)");
-		int type = scanner.nextInt();
+
+	public static void downloadCli(String selectType, String inputName, String filePath, String startTime, String endTime) throws ParseException, IOException, InterruptedException {
+		IMG_LOCATION = filePath;
+        Map<String, Integer> map = new HashMap<>();
+        map.put("用户昵称", 3);
+        map.put("用户名", 2);
+        map.put("用户ID", 1);
+		int type = map.get(selectType);
 		String containerId = "";
 		if(type==1){
-			System.out.println("输入用户ID");
-			String uid = scanner.next().trim();
+			String uid = inputName;
 			containerId = WeiboUtils.uidToContainerId(uid);
 		}else if(type==2){
-			System.out.println("输入用户名");
-			String name = scanner.next().trim();
+			String name = inputName;
 			containerId = WeiboUtils.usernameToContainerId(name);
 		}else if(type==3){
-			System.out.println("输入用户昵称");
-			String nickname = scanner.next().trim();
+			String nickname = inputName;
 			containerId = WeiboUtils.nicknameToContainerId(nickname);
 		}
-		
-		//关闭输入
-		scanner.close();
-		
-		List<String> imgUrls = null;
+        if (containerId == null) {
+            System.out.println("未找到用户, 请检查账户名");
+            return;
+        }
+		List<String> imgUrls;
 		try {
 			imgUrls = WeiboUtils.getAllImgURL(containerId);
 		} catch (Exception e1) {
+			e1.printStackTrace();
 			System.out.println("解析出现异常， 请稍候再试！");
 			return;
 		}
