@@ -7,10 +7,10 @@
 下载`bin/wb.jar`
 双击运行 或者执行`java -jar wb.jar`来启动
 
->无法运行? 没有安装JAVA 去[这个网址](https://www.java.com/zh_CN/)
+>无法运行? 没有安装JAVA 去[这个网址](https://www.java.com/zh_CN/)安装
 
 ![](img/maingui.jpg)
-1. 按照需求点入响应的信息
+1. 按照需求点入相应的信息
 2. 如果对账号类型有疑问的话，可以参考[我的博客](https://www.cnblogs.com/yanximin/p/10982235.html)
 3. 等待下载完成即可. So Easy!
 
@@ -30,6 +30,7 @@
 	- 增加GUI，操作更加人性化。
 	- 新增时间选择
 	- 修复几处BUG
+	- 采用JDK8编译
 	
 ## Python移植版本
 [ningshu/weiboPicDownloader](https://github.com/ningshu/weiboPicDownloader)  
