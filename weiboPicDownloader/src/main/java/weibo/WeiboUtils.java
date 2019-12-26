@@ -105,7 +105,18 @@ public class WeiboUtils {
         get.setHeader("User-Agent", USER_AGENT);
         HttpResponse response = httpClient.execute(get);
         String ret = EntityUtils.toString(response.getEntity(), "utf-8");
-        JsonObject root = new JsonParser().parse(ret).getAsJsonObject();
+        JsonObject root;
+        try {
+            // 防封
+            root = new JsonParser().parse(ret).getAsJsonObject();
+        } catch (Exception e) {
+            try {
+                Thread.sleep(60000);
+            } catch (Exception e1) {
+
+            }
+            return 1;
+        }
         JsonObject asJsonObject = root.getAsJsonObject("data");
         JsonArray array = asJsonObject.getAsJsonArray("cards");
         for (int i = 0; i < array.size(); i++) {
