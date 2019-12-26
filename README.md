@@ -31,6 +31,8 @@
 	- 新增时间选择
 	- 修复几处BUG
 	- 采用JDK8编译
+- 2019年12月26日
+        - 修复微博数量过多导致的崩溃
 	
 ## Python移植版本
 [ningshu/weiboPicDownloader](https://github.com/ningshu/weiboPicDownloader)  
