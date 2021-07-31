@@ -4,10 +4,7 @@
 
 ## 用法
 
-下载`bin/wb.jar`
-双击运行 或者执行`java -jar wb.jar`来启动
-
->无法运行? 没有安装JAVA 去[这个网址](https://www.java.com/zh_CN/)安装
+编译，使用`MainGui`主类运行
 
 ![](img/maingui.jpg)
 1. ~~按照需求点入相应的信息~~ 由于微博接口变动 目前支持根据ID下载
@@ -32,8 +29,10 @@
 	- 修复几处BUG
 	- 采用JDK8编译
 - 2019年12月26日
-        - 修复微博数量过多导致的崩溃
-	
+    - 修复微博数量过多导致的崩溃
+- 2021年7月31日
+    - 去除不支持的下载类型，去除bin文件，执行需要自行编译
+
 ## Python移植版本
 [ningshu/weiboPicDownloader](https://github.com/ningshu/weiboPicDownloader)  
 [nondanee/weiboPicDownloader](https://github.com/nondanee/weiboPicDownloader)  

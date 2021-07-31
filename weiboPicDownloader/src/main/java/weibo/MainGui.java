@@ -149,7 +149,6 @@ public class MainGui extends JFrame {
     public static void main(String[] args){
         MainGui mainGui = new MainGui();
         mainGui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //mainGui.pack();
         mainGui.setLocationRelativeTo(null);
         mainGui.setVisible(true);
     }
