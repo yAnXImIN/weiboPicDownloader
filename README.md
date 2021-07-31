@@ -6,7 +6,7 @@
 
 编译，使用`MainGui`主类运行
 
-![](img/maingui.jpg)
+![主页面](img/maingui.jpg)
 1. ~~按照需求点入相应的信息~~ 由于微博接口变动 目前支持根据ID下载
 2. 如果对账号类型有疑问的话，可以参考[我的博客](https://www.cnblogs.com/yanximin/p/10982235.html)
 3. 等待下载完成即可. So Easy!
