@@ -12,7 +12,6 @@ public class MainGui extends JFrame {
     int DEFAULT_HEIGHT = 200;
     private JLabel label;
     private JComboBox<String> faceCombo;
-    private static final int FONTSIZE = 12;
     private static TextField tf;
     private static JButton filePathButton;
     private static DateChooser startTimeChooser;
@@ -37,8 +36,8 @@ public class MainGui extends JFrame {
         faceCombo = new JComboBox<>();
         faceCombo.setEditable(false);
         faceCombo.setEnabled(true);
-        faceCombo.addItem("用户昵称");
-        faceCombo.addItem("用户名");
+        // faceCombo.addItem("用户昵称");
+        // faceCombo.addItem("用户名");
         faceCombo.addItem("用户ID");
         this.add(label);
         this.add(faceCombo);
@@ -71,7 +70,7 @@ public class MainGui extends JFrame {
         endTimeChooser.register(endShowDate);
         this.add(endShowDate);
 
-        button = new Button("启动");
+        button = new Button("Start");
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

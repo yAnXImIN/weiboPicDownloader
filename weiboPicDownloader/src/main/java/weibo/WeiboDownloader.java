@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Scanner;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -13,7 +12,10 @@ import java.util.concurrent.Executors;
 import org.apache.http.ParseException;
 
 public class WeiboDownloader {
-	
+	public static final int TYPE_USER_ID = 1;
+	public static final int TYPE_USER_NAME = 2;
+	public static final int TYPE_USER_NICKNAME = 3;
+
 	/**
 	 * UA
 	 * */
@@ -27,18 +29,19 @@ public class WeiboDownloader {
 	public static void downloadCli(String selectType, String inputName, String filePath, String startTime, String endTime) throws ParseException, IOException, InterruptedException {
 		IMG_LOCATION = filePath;
         Map<String, Integer> map = new HashMap<>();
-        map.put("用户昵称", 3);
-        map.put("用户名", 2);
-        map.put("用户ID", 1);
+		// 目前失效 先注释
+		// map.put("用户昵称", TYPE_USER_NICKNAME);
+        // map.put("用户名", TYPE_USER_NAME);
+        map.put("用户ID", TYPE_USER_ID);
 		int type = map.get(selectType);
 		String containerId = "";
-		if(type==1){
+		if(type == TYPE_USER_ID){
 			String uid = inputName;
 			containerId = WeiboUtils.uidToContainerId(uid);
-		}else if(type==2){
+		}else if(type == TYPE_USER_NAME){
 			String name = inputName;
 			containerId = WeiboUtils.usernameToContainerId(name);
-		}else if(type==3){
+		}else if(type == TYPE_USER_NICKNAME){
 			String nickname = inputName;
 			containerId = WeiboUtils.nicknameToContainerId(nickname);
 		}

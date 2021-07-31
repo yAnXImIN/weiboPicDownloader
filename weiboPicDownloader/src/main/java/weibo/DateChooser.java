@@ -78,7 +78,6 @@ import javax.swing.BorderFactory;
 
 import javax.swing.JComponent;
 
-import javax.swing.JFrame;
 
 import javax.swing.JLabel;
 
@@ -455,8 +454,6 @@ public class DateChooser extends JPanel {
     //提交日期
 
     private void commit() {
-
-        //TODO add other components here
 
         if (showDate instanceof JTextField) {
 
